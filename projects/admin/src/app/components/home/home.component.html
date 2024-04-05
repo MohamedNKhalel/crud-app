@@ -1,0 +1,77 @@
+<section>
+    <div class="d-flex justify-content-between align-items-center ">
+        
+        <button (click)="addTask()" type="button" class="bg-main d-block ms-auto mt-4 col-lg-2">{{'tasks.addtask'|translate}}</button>
+    </div>
+    <div class="row my-4 g-4">
+        <div class="col-md-3">  
+            <div>
+                <input class="form-control" [(ngModel)]="searchWord" type="text" placeholder="{{'search.title'|translate}}">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <select [(ngModel)]="searchUser" title="users" class="form-select" name="users">
+                    <option selected disabled  value="">{{'search.user' | translate}}</option>
+                    <option *ngFor="let user of users  " [value]="user.username">{{user.username}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <select [(ngModel)]="searchStatus" title="users" class="form-select" name="users">
+                    <option selected disabled  value="">{{'search.status' | translate}}</option>
+                    <option *ngFor="let state of status"  [value]="state">{{state}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <input [(ngModel)]="searchDate" class="form-control" type="date" placeholder="Enter a date range">
+            </div>
+        </div>
+    </div>
+    <table class="my-table">
+        <thead>
+            <tr>
+                <th>{{'tasks.number' | translate}}</th>
+                <th>{{'tasks.title' | translate}}</th>
+                <th>{{'tasks.user' | translate}}</th>
+                <th>{{'tasks.deadline' | translate}}</th>
+                <th>{{'tasks.status' | translate}}</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-bottom" *ngFor="let task of userTasks | search:searchWord | filteruser:searchUser | filterstatus:searchStatus | filterdeadline:searchDate | paginate: { id: 'taskPaginate',
+            itemsPerPage: limit,
+            currentPage: currentPage,
+            totalItems: total } ;let x=index">
+                <td><img [src]="imageUrl+task.image" class="task-image" title="image" [alt]="task.title"></td>
+                <td>{{task.title}}</td>
+                <td>{{task.userId.username}}</td>
+                <td>{{task.deadline}}</td>
+                <td>{{task.status}}</td>            
+                <td><button (click)="updataTask(task)" class="text-white btn btn-warning" type="button">{{'buttons.update' | translate}}</button></td>
+                <td><button (click)="deleteTask(task._id)" class="text-white btn btn-danger" type="button">{{'buttons.delete' | translate}}</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center my-3">
+        <pagination-controls  id="taskPaginate"
+                (pageChange)="pageChanged($event)"
+                (pageBoundsCorrection)="pageChanged($event)"
+                [maxSize]="total"
+                [directionLinks]="true"
+                [autoHide]="true"
+                [responsive]="true"
+                previousLabel="{{'pagination.prev'| translate}}"
+                nextLabel="{{'pagination.next'| translate}}"
+                screenReaderPaginationLabel="Pagination"
+                screenReaderPageLabel="page"
+                screenReaderCurrentLabel="You're on page">
+        </pagination-controls>
+    </div>
+</section>
+

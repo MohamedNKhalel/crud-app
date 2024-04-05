@@ -1,0 +1,35 @@
+<section>
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div>
+                <img class="w-100" src="./assets/images/Sign in-pana.svg" alt="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <form (ngSubmit)="loginFunction()" [formGroup]="loginForm" class="example-form">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>{{"login.label.email" | translate}}</mat-label>
+                        <input title="email" #emailInput formControlName="email" type="email" matInput [placeholder]="emailPlaceholder">
+                    </mat-form-field>
+                    <div *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched || emailInput.value.length >0 )">
+                        <p class="alert alert-danger" *ngIf="(loginForm.get('email')?.getError('email') )">{{"login.validation.email.valid" | translate}}</p>
+                        <p class="alert alert-danger" *ngIf="(loginForm.get('email')?.errors?.['required'] )">{{"login.validation.email.required" | translate}}</p>
+                    </div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>{{"login.label.password" | translate}}</mat-label>
+                        <input title="password" #passInput formControlName="password" type="email" matInput [placeholder]="passPlaceholder">
+                    </mat-form-field>
+                    <div *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || passInput.value.length >0 )">
+                        <p class="alert alert-danger" *ngIf="(loginForm.get('password')?.errors?.['required'] )">{{"login.validation.password.required" | translate}}</p>
+                    </div>
+                    <div>
+                        <button [disabled]="loginForm.invalid" type="submit" class="bg-main w-100"><span *ngIf="!isClicked">{{"login.function.sigin" | translate}}</span> <i *ngIf="isClicked" class="fa fa-spin fa-spinner"></i></button>
+                        <p  (click)="navigate()" class="text-primary mt-1 cursor-pointer text-center">{{"login.function.create" | translate}}</p>
+                    </div>
+                    <p *ngIf="errMsg" class="alert alert-danger mt-1 text-center text-capitalize">{{errMsg}}</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

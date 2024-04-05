@@ -1,0 +1,38 @@
+<section >
+            <div class="row" >
+                <div class="col-md-3" *ngFor="let item of userTasks | paginate: { id: 'tasks',
+                itemsPerPage: pageSize,
+                currentPage: currentPage,
+                totalItems: total }">
+                    <div class="my-card">
+                        <div class="head">
+                            <img class="w-100 rounded-2 mb-3" height="300px" [src]="imageUrl+item.image" alt="">
+                            <h1 class="text-center">{{item.title}}</h1>
+                        </div>
+                        <div class="body">
+                            <p><span class="fw-bolder">{{"card.deadline"| translate}} : </span><span class="text-muted">{{item.deadline}}</span></p>
+                            <p> <span class="fw-bolder ">{{'card.description' | translate}} : </span> {{item.description}}</p>
+                        </div>
+                        <div class="footer d-flex justify-content-between mx-5">
+                            <button [routerLink]="['/details',item._id]" class="bg-1">{{"card.details" | translate}}</button>
+                            <button (click)="completeTask(item._id)" class="bg-2">{{'card.complete' | translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <div class="py-2">
+        <pagination-controls class="text-center"  id="tasks"
+            (pageChange)="pageChanged($event)"
+            (pageBoundsCorrection)="pageChanged($event)"
+            [maxSize]="9"
+            [directionLinks]="true"
+            [autoHide]="true"
+            [responsive]="true"
+            previousLabel="Previous"
+            nextLabel="Next"
+            screenReaderPaginationLabel="Pagination"
+            screenReaderPageLabel="page"
+            screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
+    </div>
+</section>

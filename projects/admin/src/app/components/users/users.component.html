@@ -1,0 +1,23 @@
+<section class="mt-4">
+    <input  [(ngModel)]="searchWord" class="form-control search" type="text" placeholder="{{'users.search' | translate}}">
+    <table class="my-table mt-4">
+        <thead>
+            <tr>
+                <th>{{'users.number' | translate}}</th>
+                <th>{{'users.name' | translate}}</th>
+                <th>{{'users.email' | translate}}</th>
+                <th>{{'users.task' | translate}}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users | usersearch:searchWord;let x=index">
+                <td>{{x+1}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.assignedTasks}}</td>
+                <td><button (click)="dleteUser(user._id)"  class="text-white btn btn-danger" type="button">{{'buttons.delete' | translate}}</button></td>
+            </tr>
+        </tbody>
+    </table>
+</section>

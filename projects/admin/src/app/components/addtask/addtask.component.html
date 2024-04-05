@@ -1,0 +1,72 @@
+<section *ngIf="isClicked" class=" position-fixed top-0 start-0 end-0 bottom-0  add-task ">
+    <div class="main w-75">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="h3">{{'addtask.head' | translate}}</h1>
+            <i  mat-dialog-close class="fa fa-close fa-2x bg-dark-subtle p-2 px-3 cursor-pointer text-danger"></i>
+        </div>
+        <div>
+            <form (ngSubmit)="createTaskFunction()" [formGroup]="createTaskForm" class="mt-2">
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <div>
+                            <label class="mb-2" for="title">{{'addtask.title' | translate}}</label>
+                            <input #titleInput formControlName="title" id="title" class="form-control" type="text" placeholder="{{'addtask.title' | translate}}">
+                            <div *ngIf="createTaskForm.get('title')?.errors && (createTaskForm.get('title')?.touched || titleInput.value.length>0)" class="alert alert-danger">
+                                <p *ngIf="createTaskForm.get('title')?.errors?.['required']">{{'validation.title.required' | translate}}</p>
+                                <p *ngIf="createTaskForm.get('title')?.errors?.['minlength']">{{'validation.title.min' | translate}}</p>
+                                <p *ngIf="createTaskForm.get('title')?.errors?.['maxlength']">{{'validation.title.max' | translate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <div>
+                            <label class="mb-2" for="selectUser">{{'addtask.selectuser' | translate}}</label>
+                            <select  id="selectUser" #idInput formControlName="userId" title="users" class="form-select" name="users">
+                                <option  selected disabled >{{'addtask.option' | translate}}</option>
+                                <option *ngFor="let user of users" [value]="user._id">{{user.username}}</option>
+                            </select>
+                            <div *ngIf="createTaskForm.get('userId')?.errors && (createTaskForm.get('userId')?.touched || idInput.value.length>0)" class="alert alert-danger">
+                                <p *ngIf="createTaskForm.get('userId')?.errors?.['required']">{{'validation.user.required' | translate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <div>
+                            <label for="selectFile" class="btn btn-primary">{{'addtask.selectimage' | translate}}</label>
+                            <p *ngIf="fileName" class="alert alert-success">{{fileName}}</p>
+                            <input #imageInput hidden (change)="sendImageData($event)" id="selectFile" class="form-control" type="file" >
+                            <div *ngIf="createTaskForm.get('image')?.errors && (createTaskForm.get('image')?.touched)" class="alert alert-danger">
+                                <p *ngIf="createTaskForm.get('image')?.errors?.['required']">{{'validation.image.required' | translate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <div>
+                            <label class="mb-2" for="date">{{'addtask.deadline' | translate}}</label>
+                            <input id="data" formControlName="deadline" class="form-control" type="date" placeholder="Enter a date range">
+                            <div *ngIf="createTaskForm.get('deadline')?.errors && createTaskForm.get('deadline')?.touched " class="alert alert-danger">
+                                <p *ngIf="createTaskForm.get('deadline')?.errors?.['required']">{{'validation.date.required' | translate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <div>
+                            <label class="mb-2" for="description">{{'addtask.desc' | translate}}</label>
+                            <textarea id="description" #descriptionInput formControlName="description" class="form-control "cols="30" rows="5" placeholder="{{'addtask.desc' | translate}}"></textarea>
+                            <div *ngIf="createTaskForm.get('description')?.errors && (createTaskForm.get('description')?.touched || descriptionInput.value.length>0)" class="alert alert-danger">
+                                <p *ngIf="createTaskForm.get('description')?.errors?.['required']">{{'validation.desc.required' | translate}}</p>
+                                <p *ngIf="createTaskForm.get('description')?.errors?.['maxlength']">{{'validation.desc.max' | translate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                    <button *ngIf="!state" [disabled]="createTaskForm.invalid" type="submit" class="btn btn-success col-lg-1"><span *ngIf="!showLoad">{{'buttons.create' | translate}}</span> <i *ngIf="showLoad" class="fa fa-spin fa-spinner"></i></button>
+                    <button *ngIf="state" [disabled]="createTaskForm.invalid" type="button" (click)="updateTask()" class="btn btn-success col-lg-1"><span *ngIf="!showLoad">{{'buttons.update' | translate}}</span> <i *ngIf="showLoad" class="fa fa-spin fa-spinner"></i></button>
+                    <button type="button" matDialogClose class="btn btn-danger col-lg-1">{{'buttons.close' | translate}}</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</section>

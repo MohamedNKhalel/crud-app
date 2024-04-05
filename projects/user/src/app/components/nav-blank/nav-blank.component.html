@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container d-flex ">
+        <a class="navbar-brand text-danger text-uppercase fw-bolder"><i class="fa fa-tasks me-1"></i>Crud</a>
+        <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="bg-main" routerLink="home">{{"navbar.alltasks" | translate}}</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item d-flex">
+                    <a (click)="logout()" class="nav-link cursor-pointer" >{{"navbar.logout"| translate}}</a>
+                    <a (click)="changeLanguage()" class="nav-link text-primary cursor-pointer" >{{lang == 'en' ?"عربي":"English"}}</a>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+</nav>

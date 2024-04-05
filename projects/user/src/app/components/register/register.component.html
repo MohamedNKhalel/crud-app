@@ -1,0 +1,53 @@
+<section>
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div>
+                <img class="w-100" src="./assets/images/Sign up-rafiki.svg" alt="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <form (ngSubmit)="registerFunction()" [formGroup]="registerForm" >
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>{{"register.label.name" | translate}}</mat-label>
+                        <input title="name" #nameInput formControlName="username" type="text" matInput [placeholder]="namePlaceholder">
+                    </mat-form-field>
+                    <div *ngIf="registerForm.get('username')?.errors && (registerForm.get('username')?.touched || emailInput.value.length >0 )">
+                        <p class="alert alert-danger" *ngIf="(registerForm.get('username')?.errors?.['required'] )">{{"register.validation.name.required" | translate}}</p>
+                        <p class="alert alert-danger" *ngIf="(registerForm.get('username')?.getError('minlength') )">{{"register.validation.name.min" | translate}}</p>
+                        <p class="alert alert-danger" *ngIf="(registerForm.get('username')?.getError('maxlength') )">{{"register.validation.name.max" | translate}}</p>
+                    </div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>{{"register.label.email" | translate}}</mat-label>
+                        <input title="email" #emailInput formControlName="email" type="email" matInput [placeholder]="emailPlaceholder">
+                    </mat-form-field>
+                    <div *ngIf="registerForm.get('email')?.errors && (registerForm.get('email')?.touched || emailInput.value.length >0 )">
+                        <p class="alert alert-danger" *ngIf="(registerForm.get('email')?.errors?.['required'] )">{{"register.validation.email.required" | translate}}</p>
+                        <p class="alert alert-danger" *ngIf="(registerForm.get('email')?.getError('email') )">{{"register.validation.email.valid" | translate}}</p>
+                    </div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>{{"register.label.password" | translate}}</mat-label>
+                        <input title="password" #passInput formControlName="password" type="text" matInput [placeholder]="passPlaceholder">
+                    </mat-form-field>
+                    <div *ngIf="registerForm.get('password')?.errors && (registerForm.get('password')?.touched || passInput.value.length >0 )">
+                        <p class="alert alert-danger" *ngIf="(registerForm.get('password')?.errors?.['required'] )">{{"register.validation.password.required" | translate}}</p>
+                        <p class="alert alert-danger" *ngIf="(registerForm.get('password')?.getError('pattern') )">{{"register.validation.password.pattern" | translate}}</p>
+                    </div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>{{"register.label.repassword" | translate}}</mat-label>
+                        <input title="confirm password" #rePassInput formControlName="confirmPassword" type="text" matInput [placeholder]="repassPlaceholder">
+                    </mat-form-field>
+                    <div *ngIf="registerForm.get('confirmPassword')?.errors && (registerForm.get('confirmPassword')?.touched || rePassInput.value.length >0 )">
+                        <p class="alert alert-danger" *ngIf="(registerForm.get('confirmPassword')?.errors?.['required'] )">{{"register.validation.repassword.required" | translate}}</p>
+                        <p class="alert alert-danger" *ngIf="(registerForm.get('confirmPassword')?.getError('pattern') )">{{"register.validation.repassword.pattern" | translate}}</p>
+                    </div>
+                    <div>
+                        <button [disabled]="registerForm.invalid" type="submit" class="bg-main w-100"><span *ngIf="!isClicked">{{"register.function.create" | translate}}</span> <i *ngIf="isClicked" class="fa fa-spin fa-spinner"></i> </button>
+                        <p  (click)="navigate()" class="text-primary mt-1 cursor-pointer text-center">{{"register.function.sigin" | translate}}</p>
+                    </div>
+                    <p *ngIf="errMsg" class="alert alert-danger mt-1 text-center text-capitalize">{{errMsg}}</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

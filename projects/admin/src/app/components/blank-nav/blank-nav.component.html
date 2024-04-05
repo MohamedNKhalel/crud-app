@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <a routerLink="/home" class="navbar-brand text-danger fw-bolder"><i class="fa fa-tasks me-1 text-danger"></i>CRUD</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item ">
+                    <a class="nav-link"  routerLinkActive="bg-main" routerLink="home" >{{'navbar.alltasks' | translate}}</a>
+                </li>
+                <li class="nav-item"> 
+                    <a  class="nav-link" routerLinkActive="bg-main" routerLink="users" >{{'navbar.users' | translate}}</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item d-flex justify-content-between">
+                    <span (click)="logOut()" class="nav-link cursor-pointer" >{{'navbar.logout' | translate}}</span>
+                    <span (click)="changeLanguage()"  class="nav-link cursor-pointer text-primary" >{{lang=='en'?'Arabic':'English'}}</span>
+                </li>
+                
+            </ul>
+
+        
+        </div>
+    </div>
+</nav>

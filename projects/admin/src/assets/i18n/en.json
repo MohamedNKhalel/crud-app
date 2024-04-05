@@ -1,0 +1,112 @@
+{
+    "tasks":{
+        "addtask":"Add Task",
+        "title":"Title",
+        "user":"User",
+        "deadline":"Deadline Date",
+        "status":"Status",
+        "number":"task"
+    },
+    "status":{
+        "complete":"Complete",
+        "inprogress":"In-Progress"
+    },
+    "addtask":{
+        "head":"Add New Task",
+        "title":"Title",
+        "selectuser":"Select User :",
+        "option":"User",
+        "selectimage":"Select Image",
+        "deadline":"Deadline Date",
+        "desc":"Description"
+    },
+    "validation":{
+        "title":{
+            "required":"Title is required",
+            "min":"Minimum title length is 5",
+            "max":"Maximum title length is 20"
+        },
+        "user":{
+            "required":"User is required"
+        },
+        "image":{
+            "required":"Image is required"
+        },
+        "date":{
+            "required":"Date is required"
+        },
+        "desc":{
+            "required":"Description is required",
+            "max":"Maximum description length is 100"
+        },
+        "email":{
+            "required":"Email is required",
+            "email":"Please enter a valid email"
+        },
+        "pass":{
+            "required":"password is required",
+            "min":"Minimum password length is 4",
+            "pattern":"password must contain at least one character"
+        }
+    },
+    "search":{
+        "title":"Search...",
+        "user":"By User",
+        "status":"Status"
+    },
+    "navbar":{
+        "alltasks":"alltasks",
+        "users":"users",
+        "logout":"logout",
+        "login":"Sign in"
+    },
+    "login":{
+        "title":"Sign in",
+        "email":"Email :",
+        "pass":"Password :",
+        "label":{
+            "email":"Email",
+            "password":"Password"
+        }
+    },
+    "buttons":{
+        "update":"Update",
+        "delete":"Delete",
+        "create":"Create",
+        "close":"Close",
+        "sigin":"Sign in"
+    },
+    "general":{
+        "loading":"loading"
+    },
+    "users":{
+        "number":"No",
+        "name":"Name",
+        "email":"Email",
+        "task":"Task Assigned",
+        "search":"Search User"
+    },
+    "pagination":{
+        "prev":"Previous",
+        "next":"Next"
+    },
+    "toaster":{
+        "home":{
+            "delete":"Task Deleted Successfully",
+            "title":"Done"
+        },
+        "addTask":{
+            "create":"Task Created Successfully",
+            "update":"Task Updated Successfully",
+            "title":"Done"
+        },
+        "user":{
+            "delete":"User Deleted Successfully",
+            "title":"Done"
+        },
+        "login":{
+            "success":"Login Successfully",
+            "welcome":"Welcome"
+        }
+    }
+}

@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --main-color:#E33259;
+    // direction: rtl;
+}
+    .bg-main{
+        background-color: var(--main-color);
+        color: white !important;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        transition: all .5s;
+        text-decoration: none;
+        &:hover{
+            background-color:#82172e;
+            color: white;
+        }
+    }
+    
+    .eye{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: var(--main-color);
+    }
+    .cursor-pointer{
+        cursor: pointer;
+    }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

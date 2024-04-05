@@ -1,0 +1,96 @@
+{
+    "loading":"Loading...",
+    "navbar":
+    {
+        "logo":"CRUD",
+        "alltasks":"alltasks",
+        "logout":"Log Out",
+        "login":"Login",
+        "signin":"Register"
+    },
+    "login":{
+        
+        "function":{
+            "sigin":"Sign in",
+            "create":"Create Account ?"
+        },
+        "label":{
+            "email":"Email",
+            "password":"Password"
+        },
+        "placeholder":
+        {
+            "email":"Enter Yor Email",
+            "password":"Enter Yor Password"
+            
+        },
+        "validation":
+        {
+            "email":{
+                "required":"Email is required",
+                "valid":"Please enter a valid email address"
+            },
+            "password":{
+                "required":"Password is required"
+            }
+        }
+    },
+    "register":{
+        "validation":{
+            "name":{
+                "required":"Name is required",
+                "min":"Minimum length is 5",
+                "max":"Maximum length is 20"
+            },
+            "email":{
+                "required":"Email is required",
+                "valid":"Please enter a valid email address"
+            },
+            "password":{
+                "required":"Password is required",
+                "pattern":"Password must contain at least one character"
+            },
+            "repassword":{
+                "required":"confirm Password is required",
+                "pattern":"Password must contain at least one character"
+            }
+        },
+        "label":{
+            "name":"User Name",
+            "email":"Email",
+            "password":"Password",
+            "repassword":"Confirm Password"
+        },
+        "placeholder":{
+            "name":"Enter Your Name",
+            "email":"Enter Yor Email",
+            "password":"Enter Yor Password",
+            "repassword":"Enter Password Again"
+        },
+        "function":{
+            "create":"Create Account",
+            "sigin":"already have an account ?"
+        }
+    },
+    "card":
+    {
+        "deadline":"Deadline Date",
+        "description":"Description",
+        "details":"Details",
+        "complete":"Complete"
+    },
+    "details":{
+        "title":"Title",
+        "description":"Description",
+        "deadline":"Deadline",
+        "status":"Status",
+        "created":"Created at",
+        "updated":"Updated at",
+        "complete":"Complete"
+    },
+    "toastr":{
+        "complete":"Task Completed Successfuly",
+        "done" : "Done",
+        "success":"Login Successfuly"
+    }
+}
